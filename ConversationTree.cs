@@ -50,14 +50,9 @@ namespace DialogueSystem
 
 	public class ConversationLink
 	{
-		public ConversationLink(ConversationNode node, string text)
+		public ConversationLink(ConversationNode nextnode, string text)
 		{
-			nextNode = node;
-			this.text = text;
-		}
-		public ConversationLink(string NodeID, string text)
-		{
-			nextNode = ConversationNode.NodeTable[NodeID];
+			nextNode = nextnode;
 			this.text = text;
 		}
 

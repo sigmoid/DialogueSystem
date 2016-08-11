@@ -39,6 +39,10 @@
     <Compile Include="EmptyCSharpFile.cs" />
     <Compile Include="ConversationDisplay.cs" />
     <Compile Include="ConsoleTraverser.cs" />
+    <Compile Include="ConvoScriptParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="DialogueSyntaxTest.txt" />
+  </ItemGroup>
 </Project>
