@@ -7,12 +7,12 @@ namespace DialogueSystem
 		public static void Main (string[] args)
 		{
 			ConvoScriptParser parser = new ConvoScriptParser ();
-			parser.Parse("DialogueSyntaxTest.txt");
+			ConversationTree testTree = parser.Parse("DialogueSyntaxTest.txt");
 
-			//ConversationTraverser tv = new ConsoleTraverser (testTree);
+			ConversationTraverser tv = new ConsoleTraverser (testTree);
 
-			//while (true)
-			//	tv.Update ();
+			while (true)
+				tv.Update ();
 		}
 	}
 }

@@ -24,6 +24,8 @@ namespace DialogueSystem
 
 		public string Line;
 
+		public int IndentLvl;
+
 		public ConversationNode( string line, string ID = "noname")
 		{
 			if (NodeTable == null)
