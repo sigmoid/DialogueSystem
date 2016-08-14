@@ -9,10 +9,12 @@ namespace DialogueSystem
 			ConvoScriptParser parser = new ConvoScriptParser ();
 			ConversationTree testTree = parser.Parse("DialogueSyntaxTest.txt");
 
-			ConversationTraverser tv = new ConsoleTraverser (testTree);
+			ConsoleTraverser tv = new ConsoleTraverser (testTree);
 
-			while (true)
+			while (tv.CanContinue)
 				tv.Update ();
+
+
 		}
 	}
 }

@@ -12,6 +12,8 @@ namespace DialogueSystem
 		ConversationNode cNode;
 		ConversationDisplay cDisp;
 
+		public bool CanContinue = true;
+
 
 		public ConsoleTraverser(ConversationTree tree){
 			this.tree = tree;
@@ -24,9 +26,14 @@ namespace DialogueSystem
 		public void Update()
 		{
 			string inp = Console.ReadLine ();
+			if (cNode.IsLeaf){
+				CanContinue = false;
+				return;
+			}
 
 			int iVal;
 			if (int.TryParse (inp, out iVal)) {
+
 				iVal -= 1;
 				if (iVal < cNode.Links.Count) {
 					cNode = cNode.Links [iVal].nextNode;
