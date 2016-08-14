@@ -64,15 +64,19 @@ namespace DialogueSystem
 
 			//Split the line into parts
 			string[] dada = line.Split ('|');
-			ConversationNode tmpNode = new ConversationNode (dada [0], 
-				(dada.Length > 2)? dada[2]:"noname"); 
+			ConversationNode tmpNode = new ConversationNode (dada [0]); 
 			tmpNode.IndentLvl = indentLvl;
+
+			string name = "null";
+			if (dada.Length > 2)
+				name = dada [2];
 
 			//IF the tree is uninstantiated, instantiate it with a root node and return
 			if (tree == null) {
 				tree = new ConversationTree (tmpNode);
 				nodeStack.Push (tmpNode);
-				NodeTable.Add (tmpNode.ID,tmpNode);
+				if(name != "null")
+					NodeTable.Add (name,tmpNode);
 				return;
 			}
 			
@@ -93,10 +97,10 @@ namespace DialogueSystem
 				if (dada [0].Contains ("GOTO")) {
 
 					Match nodeName = Regex.Match (dada [0], "GOTO(.*)");
-					AppendNode (new ConversationLink (NodeTable [nodeName.Groups [1].Value], dada [1]));
+					AppendNode (new ConversationLink (NodeTable [nodeName.Groups [1].Value], dada [1]), name);
 					return;
 				}
-				AppendNode( new ConversationLink (tmpNode, dada [1]));
+				AppendNode( new ConversationLink (tmpNode, dada [1]),name);
 			} 
 
 
@@ -104,11 +108,11 @@ namespace DialogueSystem
 		}
 	
 
-		void AppendNode(ConversationLink lnk)
+		void AppendNode(ConversationLink lnk, string name)
 		{
 			tree.AddLink (nodeStack.Peek (),lnk);
-			if (lnk.nextNode.ID != "noname" && !NodeTable.ContainsValue(lnk.nextNode))
-				NodeTable.Add (lnk.nextNode.ID, lnk.nextNode);
+			if (name != "null" && !NodeTable.ContainsValue(lnk.nextNode))
+				NodeTable.Add (name, lnk.nextNode);
 		}
 
 	}

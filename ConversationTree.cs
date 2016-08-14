@@ -29,25 +29,17 @@ namespace DialogueSystem
 	{
 		//public static Dictionary<string, ConversationNode> NodeTable;
 
-		public string ID { get; private set;}
-
 		public List<ConversationLink> Links;
 
 		public string Line;
 
 		public int IndentLvl;
 
-		public ConversationNode( string line, string ID = "noname")
+		public ConversationNode( string line)
 		{
 			Links = new List<ConversationLink>();
 			Line = line;
-			this.ID = ID;
 		}
-
-		//public void AddLink(ConversationLink lnk){
-		//	Links.Add (lnk);
-		//
-		//}
 
 		public bool IsLeaf
 		{
@@ -58,11 +50,6 @@ namespace DialogueSystem
 				return false;
 			}
 		}
-
-		//public static void AddLink(string parentID, ConversationLink lnk)
-		//{
-		//	NodeTable [parentID].AddLink (lnk);
-		//}
 	}
 
 	public class ConversationLink
