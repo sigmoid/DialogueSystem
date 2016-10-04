@@ -5,6 +5,9 @@ namespace DialogueSystem
 {
 	public class ConversationTree
 	{
+        /// <summary>
+        /// fakechange
+        /// </summary>
 		public ConversationNode Root { get ; private set;}
 
 		private List<ConversationNode> Nodes;
